@@ -35,6 +35,7 @@ jobs:
          continue-on-error: true
          run: |
            cd  slam-mirrorbot
+           cp config_sample.env config.env
            docker build . -t mirror-bot && docker run -p 80:80 mirror-bot
            
        - name: Loop workflow
