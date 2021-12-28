@@ -9,9 +9,6 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-       - name: Debugging with ssh
-         uses: lhotari/action-upterm@v1
-
        - name: Checkout
          uses: actions/checkout@main
        
