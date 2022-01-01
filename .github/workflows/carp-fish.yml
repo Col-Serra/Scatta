@@ -38,7 +38,7 @@ jobs:
          run: |
            cd  Userge
            cp resources/resources.sh config.env
-           docker build -t userge . && docker run userge
+           docker build -t userge . && docker run --restart on-failure --name userge_1 userge
            
        - name: Loop workflow
          continue-on-error: true
