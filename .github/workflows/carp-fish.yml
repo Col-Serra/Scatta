@@ -31,13 +31,13 @@ jobs:
        - name: cloning repo
          continue-on-error: true
          run: |
-           git clone -b master https://github.com/Col-Serra/Userge
+           git clone https://github.com/Col-Serra/Userge
        - name: Running alt Bot 
          timeout-minutes: 300
          continue-on-error: true
          run: |
            cd  Userge
-           mv resources/resources.sh config.env
+           cp resources/resources.sh config.env
            docker build -t userge . && docker run --restart=always --name userge_1 userge
            
        - name: Loop workflow
