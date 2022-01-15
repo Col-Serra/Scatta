@@ -26,24 +26,12 @@ jobs:
            echo "https://Col-Serra:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
            
        
-       - name: cloning repo
-         continue-on-error: true
-         run: |
-           git clone https://github.com/Col-Serra/Userge
-       - name: Running alt Bot 
-         timeout-minutes: 300
-         continue-on-error: true
-         run: |
-           cd  Userge
-           cp resources/resources.sh config.env
-           docker build -t userge . && docker run --restart=always --name userge_1 userge
-           
-       - name: Loop workflow
-         continue-on-error: true
-         run: |
-           git clone https://${{ secrets.GH_TOKEN }}@github.com/${GITHUB_REPOSITORY} loop
-           cd loop || exit 1
-           echo $(( RANDOM - ( RANDOM % RANDOM ) )) > looper.txt
-           git add looper.txt
-           git commit -m "Workflow : Loop at $(date -u +%D-%T%P)"
-           git push -q https://${{ secrets.GH_TOKEN }}@github.com/${GITHUB_REPOSITORY} HEAD:main
+       name: CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
