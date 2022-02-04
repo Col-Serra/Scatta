@@ -8,7 +8,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: cloning repo
-         continue-on-error: true
+      continue-on-error: true
       run: |
         git clone https://github.com/Col-Serra/RetroMusicPlayer
     - name: set up JDK 11
