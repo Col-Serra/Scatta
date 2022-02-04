@@ -23,6 +23,7 @@ jobs:
         storePassword=android
         keyPassword=android
         EOF
+
     steps:
     - uses: actions/checkout@v2
     - name: Setup tmate session
