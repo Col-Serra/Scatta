@@ -7,6 +7,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: set up JDK 11
+      run: |
+        git clone https://github.com/Col-Serra/RetroMusicPlayer
       uses: actions/setup-java@v2
       with:
         java-version: '11'
