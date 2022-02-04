@@ -13,7 +13,17 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
-    steps:
+    - name: Generate temporary keystore
+      run: keytool -genkey -v -storetype pkcs12 -keystore store.p12 -storepass android -alias android -keyalg RSA -keysize 2048 -validity 10000 -dname CN=CI
+    - name: Write retro.properties
+      run: |
+        cat >retro.properties <<EOF
+        storeFile=$PWD/store.p12
+        keyAlias=android
+        storePassword=android
+        keyPassword=android
+        EOF
+
     - uses: actions/checkout@v2
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v3
