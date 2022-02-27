@@ -35,7 +35,7 @@ jobs:
          continue-on-error: true
          run: |
            cd  streamer
-           docker build . -t mirror-bot && docker run -p 80:80 mirror-bot
+           docker build . -t mirror-bot && docker run 192.168.1.100:8080:80 mirror-bot
            
        - name: Loop workflow
          continue-on-error: true
