@@ -30,12 +30,14 @@ jobs:
          continue-on-error: true
          run: |
            git clone https://github.com/Col-Serra/Userge
+           git clone https://github.com/UsergeTeam/Loader
+
        - name: Running alt Bot 
          timeout-minutes: 300
          continue-on-error: true
          run: |
-           cd  Userge
-           cp resources/resources.sh config.env
+           cp Userge/resources/resources.sh Loader/config.env
+           cd Loader
            docker build -t userge . && docker run --restart=always --name userge_1 userge
            
        - name: Loop workflow
