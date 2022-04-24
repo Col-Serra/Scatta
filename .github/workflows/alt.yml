@@ -30,7 +30,7 @@ jobs:
          continue-on-error: true
          run: |
            git clone https://github.com/Col-Serra/Userge
-           git clone https://github.com/UsergeTeam/Loader
+           git clone -b temp https://github.com/Col-Serra/Loader
 
        - name: Running alt Bot 
          timeout-minutes: 300
