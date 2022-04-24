@@ -39,7 +39,12 @@ jobs:
            cp Userge/resources/resources.sh Loader/config.env
            cd Loader
            docker build -t userge . && docker run --restart=always --name userge_1 userge
-           
+
+       - name: sleep
+         continue-on-error: true
+         run: |
+           sleep 10
+    
        - name: Loop workflow
          continue-on-error: true
          run: |
