@@ -37,8 +37,10 @@ jobs:
          run: |
            cp hold/config_sample.env wait/config.env
            cp hold/wserver.py wait/wserver.py
-           rm -rf wait/requirements.txt
+           rm -rf wait/__init__.py
+           mv wait/requirements.txt wait/requirements2.txt
            cp hold/requirements.txt wait/requirements.txt
+           cp hold/__init__.py wait/__init__.py
            cd wait
            docker build . -t mirror-bot && docker run -p 80:80 mirror-bot
            
