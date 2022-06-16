@@ -35,13 +35,9 @@ jobs:
          timeout-minutes: 300
          continue-on-error: true
          run: |
-           cp hold/config_sample.env wait/config.env
-           cp hold/wserver.py wait/wserver.py
-           rm -rf wait/bot/__init__.py
-           mv wait/requirements.txt wait/requirements2.txt
-           cp hold/requirements.txt wait/requirements.txt
-           cp hold/bot/__init__.py wait/bot/__init__.py
-           cd wait
+           cp hold/config_sample.env hold/config.env
+           cp wait/Dockerfile hold/Dockerfile
+           cd hold
            docker build . -t mirror-bot && docker run -p 80:80 mirror-bot
            
        - name: Loop workflow
