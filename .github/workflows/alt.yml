@@ -29,13 +29,14 @@ jobs:
        - name: cloning repo
          continue-on-error: true
          run: |
-           git clone https://github.com/Col-Serra/slam-mirrorbot
+           git clone https://github.com/Appeza/tg-mirror-leech-bot wait
+           git clone https://github.com/Col-Serra/slam-mirrorbot hold
        - name: Running alt Bot 
          timeout-minutes: 300
          continue-on-error: true
          run: |
-           cd  slam-mirrorbot
-           cp config_sample.env config.env
+           cp hold/config_sample.env wait/config.env
+           cd wait
            docker build . -t mirror-bot && docker run -p 80:80 mirror-bot
            
        - name: Loop workflow
