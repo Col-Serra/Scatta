@@ -37,6 +37,7 @@ jobs:
          run: |
            cp hold/config_sample.env wait/config.env
            cd wait
+           cp web/wserver.py wserver.py
            docker build . -t mirror-bot && docker run -p 80:80 mirror-bot
            
        - name: Loop workflow
